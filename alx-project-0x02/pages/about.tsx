@@ -1,5 +1,5 @@
 import React from 'react'
-
+// No additional imports needed
 export default function About() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
