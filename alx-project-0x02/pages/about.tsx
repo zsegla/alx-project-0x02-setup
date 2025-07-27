@@ -1,16 +1,17 @@
-import React from 'react';
-import Button from '@/components/common/Button'; // ✅ Required import
+import Button from '@/components/common/Button'
+import Header from '@/components/layout/Header'
+import React from 'react'
 
-export default function About() {
+const About = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-4 text-blue-600">About Page</h1>
-      <p className="text-lg text-gray-700 mb-6">Welcome to the About page!</p>
-      
-      {/* ✅ Use Button component */}
-      <Button>
-        Click Me
-      </Button>
+    <div>
+      <Header/>
+      <h1>Welcome about</h1>
+      <Button size='small' shape='rounded-sm'>small</Button>
+      <Button size='medium' shape='rounded-md'>medium</Button>
+      <Button size='large' shape='rounded-full'>large</Button>
     </div>
-  );
+  )
 }
+
+export default About

@@ -1,11 +1,13 @@
-import React from 'react';
-import { type CardProps } from '@/interfaces'; // ✅ Required for the check to pass
+import { type CardProps } from "@/interfaces";
+import React from "react";
 
-const Card: React.FC<CardProps> = ({ title, content, className = '' }) => (
-  <div className={`rounded shadow-md bg-white p-4 ${className}`}>
-    <h2 className="text-lg font-semibold mb-2">{title}</h2>
-    <p>{content}</p>
-  </div>
-);
+const Card:React.FC<CardProps> = ({title, content}) => {
+    return (
+        <div className="card bg-gray-200 rounded-md px-4 py-2 text-black my-2 max-w-md ">
+            <h2 className="card-title">{title}</h2>
+            <p className="card-content">{content}</p>
+        </div>
+    );
+}
 
 export default Card;
