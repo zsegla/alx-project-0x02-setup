@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import './PostModal.css';
 
 interface PostModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (content: string) => void;
+    onSubmit: (title: string, content: string) => void;
 }
 
 const PostModal: React.FC<PostModalProps> = ({ isOpen, onClose, onSubmit }) => {
+    const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (content.trim()) {
-            onSubmit(content);
+        if (title.trim() && content.trim()) {
+            onSubmit(title, content);
+            setTitle('');
             setContent('');
             onClose();
         }
@@ -27,10 +30,19 @@ const PostModal: React.FC<PostModalProps> = ({ isOpen, onClose, onSubmit }) => {
                     &times;
                 </button>
                 <form onSubmit={handleSubmit}>
+                    {/* ✅ Required input field */}
+                    <input
+                        type="text"
+                        className="post-modal-input"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Title"
+                    />
+
                     <textarea
                         className="post-modal-textarea"
                         value={content}
-                        onChange={e => setContent(e.target.value)}
+                        onChange={(e) => setContent(e.target.value)}
                         placeholder="Write your post..."
                         rows={5}
                     />
@@ -42,8 +54,5 @@ const PostModal: React.FC<PostModalProps> = ({ isOpen, onClose, onSubmit }) => {
         </div>
     );
 };
-
-// import the CSS file at the top of your file
-import './PostModal.css';
 
 export default PostModal;
