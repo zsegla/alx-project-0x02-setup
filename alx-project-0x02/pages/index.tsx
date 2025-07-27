@@ -1,4 +1,5 @@
 import React from 'react'
+import { ButtonProps } from '../interfaces'
 
 export default function Home() {
   return (
